@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Result Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .result-container {
+      background-color: #fff;
+      padding: 20px;
+      font-size: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .result-text {
+      font-size: 60px;
+      font-weight: bold;
+    }
+
+    .result-text.spam {
+      color: #FF0000; /* Red color for spam */
+    }
+
+    .result-text.not-spam {
+      color: #007BFF; /* Blue color for not spam */
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <p>The email is:</p>
+    <p class="result-text {% if predictions == 0 %}not-spam{% elif predictions == 1 %}spam{% else %}unknown{% endif %}">
+      {% if predictions == 0 %}
+        Not a Spam
+      {% elif predictions == 1 %}
+        Spam
+      {% else %}
+        Unknown
+      {% endif %}
+    </p>
+  </div>
+</body>
+</html>
